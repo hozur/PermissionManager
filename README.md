@@ -83,6 +83,10 @@ sample usage to ask camera permission
                         })
                         .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
+# Advance Usage
+
+
+
 
 # License
 
