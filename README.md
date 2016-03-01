@@ -4,6 +4,10 @@
 
 Helper to ask runtime permission on android marshmallow
 
+
+The library takes care themselves to check whether a permit has already been agreed by the user or not.
+if the user has given consent call the system dialog for the acceptance
+
 ### Import
 
 ```Gradle
@@ -86,7 +90,14 @@ sample usage to ask camera permission
 # Advance Usage
 
 
+#### check whether a permit has been agreed
 
+```java
+boolean isGranted = isPermissionGranted(MainActivity.this,PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE);
+```
+#### PermissionUtils
+
+The permission class utils contains the permissions you need to ask
 
 # License
 
