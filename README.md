@@ -10,10 +10,12 @@ if the user has given consent call the system dialog for the acceptance
 
 ### Import
 
+in build.gradle
+
 ```Gradle
-repositories {
-    maven {
-        url 'https://dl.bintray.com/auron/maven'
+allprojects {
+    repositories {
+        jcenter()
     }
 }
 
