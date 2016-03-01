@@ -1,5 +1,7 @@
 # MarshmallowPermissionManager
 
+[![Platform (Android)](https://img.shields.io/badge/platform-Android-blue.svg?style=flat-square)](http://www.android.com)
+
 Helper to ask runtime permission on android marshmallow
 
 ### Import
