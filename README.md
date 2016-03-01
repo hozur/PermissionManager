@@ -50,3 +50,34 @@ sample usage to ask camera permission
                         })
                         .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
+
+#### Fragment
+
+FragmentHome extends FragmentManagePermission
+
+```java
+
+public class FragmentHome extends FragmentManagePermission {
+
+}
+```
+
+sample usage to ask camera permission
+
+```java
+ askPermission(PermissionUtils.Manifest_CAMERA)
+                        .setPermissionResult(new PermissionResult() {
+                            @Override
+                            public void permissionGranted() {
+                                //permission granted
+                                //replace with your action
+                            }
+
+                            @Override
+                            public void permissionNotGranted() {
+                                //permission denied
+                                //replace with your action
+                            }
+                        })
+                        .requestPermission(PermissionUtils.KEY_CAMERA);
+```
