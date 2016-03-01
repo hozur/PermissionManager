@@ -91,7 +91,6 @@ sample usage to ask camera permission
 ```
 # Advance Usage
 
-
 #### check whether a permit has been agreed
 
 ```java
@@ -99,7 +98,28 @@ boolean isGranted = isPermissionGranted(MainActivity.this,PermissionUtils.Manife
 ```
 #### PermissionUtils
 
-The permission class utils contains the permissions you need to ask
+The permission class utils contains the permissions you need to ask runtime
+
+### Multiple Permissions
+
+```java
+         askPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE})
+                .setPermissionResult(new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        //permission granted
+                        //replace with your action
+                    }
+
+                    @Override
+                    public void permissionNotGranted() {
+                        //permission denied
+                        //replace with your action
+                    }
+                })
+                .requestPermission(PermissionUtils.KEY_CAMERA);
+```
+in requestPermission() using one key.
 
 # License
 
