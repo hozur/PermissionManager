@@ -23,7 +23,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.0.1'
+ compile 'com.auron:permission-manage:1.0.6'
 }
 ```
 
