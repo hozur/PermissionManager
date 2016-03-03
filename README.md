@@ -11,7 +11,7 @@ if the user has given consent call the system dialog for the acceptance
 
 ### Requirements
 
-The library requires Android API Level 7+.
+The library requires Android **API Level 7+**.
 
 
 ### Import
