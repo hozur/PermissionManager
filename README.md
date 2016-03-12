@@ -164,6 +164,8 @@ The permission class utils contains the permissions you need to ask runtime
                 })
                 .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
+in requestPermission() using one key.
+
 or you can also use the contracted form
 
 ```java
@@ -181,8 +183,8 @@ or you can also use the contracted form
             }
         });
 ```
+it is not necessary to use an answer key
 
-in requestPermission() using one key.
 
 # License
 
