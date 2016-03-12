@@ -186,6 +186,11 @@ or you can also use the contracted form
 it is not necessary to use an answer key
 
 
+###Developed By
+Rurio Luca- [rurio.luca@gmail.com](mailto:rurio.luca@gmail.com)
+
+![Linkedin](https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/social/linkedin-icon.png) ](Profilo pubblicohttps://it.linkedin.com/in/luca-rurio-5a4462107)
+
 # License
 
 The MIT License (MIT)
