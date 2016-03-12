@@ -9,6 +9,8 @@
 The library takes care themselves to check whether a permit has already been agreed by the user or not.
 if the user has given consent call the system dialog for the acceptance
 
+![Screen](https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/permission.png)
+
 ### Requirements
 
 The library requires Android **API Level 7+**.
