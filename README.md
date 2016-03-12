@@ -67,6 +67,25 @@ sample usage to ask camera permission
                         .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
 
+
+or you can also use the contracted form
+
+```java
+  askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        //permission granted
+                        //replace with your action
+                    }
+
+                    @Override
+                    public void permissionNotGranted() {
+                        //permission denied
+                        //replace with your action
+                    }
+                });
+```
+
 #### Fragment
 
 FragmentHome extends FragmentManagePermission
@@ -97,6 +116,25 @@ sample usage to ask camera permission
                         })
                         .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
+or you can also use the contracted form
+
+```java
+  askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        //permission granted
+                        //replace with your action
+                        dispatchTakePictureIntent();
+                    }
+
+                    @Override
+                    public void permissionNotGranted() {
+                        //permission denied
+                        //replace with your action
+                    }
+                });
+```
+
 # Advance Usage
 
 #### check whether a permit has been agreed
@@ -127,6 +165,24 @@ The permission class utils contains the permissions you need to ask runtime
                 })
                 .requestPermission(PermissionUtils.KEY_CAMERA);
 ```
+or you can also use the contracted form
+
+```java
+  askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+            }
+
+            @Override
+            public void permissionNotGranted() {
+                //permission denied
+                //replace with your action
+            }
+        });
+```
+
 in requestPermission() using one key.
 
 # License
