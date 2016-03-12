@@ -85,22 +85,20 @@ public class ActivityManagePermission extends AppCompatActivity {
         String arrayPermissionNotGranted[];
         ArrayList<String> permissionsNotGranted = new ArrayList<>();
 
-        Log.d("TA","here");
         for (int i = 0; i < permissionAsk.length; i++) {
             if (!isPermissionGranted(ActivityManagePermission.this, permissionAsk[i])) {
                 permissionsNotGranted.add(permissionAsk[i]);
             }
         }
 
-        Log.d("TA","size: "+permissionsNotGranted.size());
+
         if (permissionsNotGranted.isEmpty()) {
-            Log.d("TA","is empty");
 
             if (permissionResult != null)
                 permissionResult.permissionGranted();
 
         } else {
-            Log.d("TA","else");
+
             arrayPermissionNotGranted = new String[permissionsNotGranted.size()];
             arrayPermissionNotGranted = permissionsNotGranted.toArray(arrayPermissionNotGranted);
             ActivityCompat.requestPermissions(ActivityManagePermission.this, arrayPermissionNotGranted, KEY_PERMISSION);

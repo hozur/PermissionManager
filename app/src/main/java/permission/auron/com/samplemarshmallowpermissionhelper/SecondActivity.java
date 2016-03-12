@@ -38,7 +38,6 @@ public class SecondActivity extends ActivityManagePermission {
                 askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
                     @Override
                     public void permissionGranted() {
-                        Log.d("SecondActivity","granded");
                         //permission granted
                         //replace with your action
                         dispatchTakePictureIntent();

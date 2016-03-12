@@ -81,4 +81,5 @@ public class PermissionUtils {
     public static final int KEY_READ_SMS = 71;
     public static final int KEY_RECEIVE_WAP_PUSH = 72;
     public static final int KEY_RECEIVE_MMS = 73;
+
 }
