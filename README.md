@@ -124,7 +124,6 @@ or you can also use the contracted form
                     public void permissionGranted() {
                         //permission granted
                         //replace with your action
-                        dispatchTakePictureIntent();
                     }
 
                     @Override
