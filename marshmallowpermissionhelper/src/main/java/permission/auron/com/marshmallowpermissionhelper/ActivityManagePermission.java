@@ -33,7 +33,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-
+import android.util.Log;
 import java.util.ArrayList;
 
 
@@ -85,19 +85,22 @@ public class ActivityManagePermission extends AppCompatActivity {
         String arrayPermissionNotGranted[];
         ArrayList<String> permissionsNotGranted = new ArrayList<>();
 
-
+        Log.d("TA","here");
         for (int i = 0; i < permissionAsk.length; i++) {
             if (!isPermissionGranted(ActivityManagePermission.this, permissionAsk[i])) {
                 permissionsNotGranted.add(permissionAsk[i]);
             }
         }
 
-
+        Log.d("TA","size: "+permissionsNotGranted.size());
         if (permissionsNotGranted.isEmpty()) {
+            Log.d("TA","is empty");
+
             if (permissionResult != null)
                 permissionResult.permissionGranted();
 
         } else {
+            Log.d("TA","else");
             arrayPermissionNotGranted = new String[permissionsNotGranted.size()];
             arrayPermissionNotGranted = permissionsNotGranted.toArray(arrayPermissionNotGranted);
             ActivityCompat.requestPermissions(ActivityManagePermission.this, arrayPermissionNotGranted, KEY_PERMISSION);
@@ -116,13 +119,30 @@ public class ActivityManagePermission extends AppCompatActivity {
                 if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
                     granted = false;
             }
-
-            if (granted) {
-                permissionResult.permissionGranted();
-            } else {
-                permissionResult.permissionNotGranted();
+            if (permissionResult != null) {
+                if (granted) {
+                    permissionResult.permissionGranted();
+                } else {
+                    permissionResult.permissionNotGranted();
+                }
             }
+        } else {
+            Log.e("ManagePermission", "permissionResult callback was null");
         }
+    }
+
+    public void askCompactPermission(String permission, PermissionResult permissionResult) {
+        KEY_PERMISSION = 200;
+        permissionsAsk = new String[]{permission};
+        this.permissionResult=permissionResult;
+        internalRequestPermission(permissionsAsk);
+    }
+
+    public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
+        KEY_PERMISSION = 200;
+        permissionsAsk = permissions;
+        this.permissionResult=permissionResult;
+        internalRequestPermission(permissionsAsk);
     }
 
 

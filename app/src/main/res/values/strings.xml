@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">SampleMarshmallowPermissionHelper</string>
+    <string name="app_name">MarshmallowPermissionHelper</string>
     <string name="action_settings">Settings</string>
 </resources>

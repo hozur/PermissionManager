@@ -6,21 +6,20 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import permission.auron.com.marshmallowpermissionhelper.ActivityManagePermission;
 import permission.auron.com.marshmallowpermissionhelper.PermissionResult;
 import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
-public class MainActivity extends ActivityManagePermission {
+public class SecondActivity extends ActivityManagePermission {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView imageView;
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,38 +28,30 @@ public class MainActivity extends ActivityManagePermission {
         imageView = (ImageView) findViewById(R.id.image);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        button = (Button) findViewById(R.id.button);
+        getSupportActionBar().setTitle("Second Activity");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //single permission
-                askPermission(PermissionUtils.Manifest_CAMERA)
-                        .setPermissionResult(new PermissionResult() {
-                            @Override
-                            public void permissionGranted() {
-                                //permission granted
-                                //replace with your action
-                                dispatchTakePictureIntent();
-                            }
+                //single permission compact form
+                askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        Log.d("SecondActivity","granded");
+                        //permission granted
+                        //replace with your action
+                        dispatchTakePictureIntent();
+                    }
 
-                            @Override
-                            public void permissionNotGranted() {
-                                //permission denied
-                                //replace with your action
-                            }
-                        })
-                        .requestPermission(PermissionUtils.KEY_CAMERA);
+                    @Override
+                    public void permissionNotGranted() {
+                        Log.d("SecondActivity","dienid");
+                        //permission denied
+                        //replace with your action
+                    }
+                });
 
-
-            }
-        });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
             }
         });
     }
@@ -103,20 +94,23 @@ public class MainActivity extends ActivityManagePermission {
         }
     }
 
-    private void sampleAskMultiplePermission() {
-        askPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE})
-                .setPermissionResult(new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        dispatchTakePictureIntent();
-                    }
+    private void sampleAskCompactMultiplePermission() {
+        //compact form
+        askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+                dispatchTakePictureIntent();
+            }
 
-                    @Override
-                    public void permissionNotGranted() {
-                        //permission denied
-                    }
-                })
-                .requestPermission(PermissionUtils.KEY_CAMERA);
+            @Override
+            public void permissionNotGranted() {
+                //permission denied
+                //replace with your action
+            }
+        });
+
     }
 }
+

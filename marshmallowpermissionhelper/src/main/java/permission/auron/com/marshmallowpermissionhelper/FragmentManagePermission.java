@@ -32,6 +32,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -118,16 +119,31 @@ public class FragmentManagePermission extends Fragment {
                 if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
                     granted = false;
             }
-
-            if (granted) {
-                permissionResult.permissionGranted();
+            if (permissionResult != null) {
+                if (granted) {
+                    permissionResult.permissionGranted();
+                } else {
+                    permissionResult.permissionNotGranted();
+                }
             } else {
-                permissionResult.permissionNotGranted();
+                Log.e("ManagePermission", "permissionResult callback was null");
             }
         }
 
-
     }
 
+    public void askCompactPermission(String permission, PermissionResult permissionResult) {
+        KEY_PERMISSION = 200;
+        permissionsAsk = new String[]{permission};
+        this.permissionResult = permissionResult;
+        internalRequestPermission(permissionsAsk);
+    }
+
+    public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
+        KEY_PERMISSION = 200;
+        permissionsAsk = permissions;
+        this.permissionResult = permissionResult;
+        internalRequestPermission(permissionsAsk);
+    }
 
 }
