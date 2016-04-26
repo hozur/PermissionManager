@@ -34,6 +34,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
 import java.util.ArrayList;
 
 
@@ -54,11 +55,24 @@ public class ActivityManagePermission extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+
+    /**
+     * Does some thing in old style.
+     *
+     * @deprecated use {@link #askCompactPermission(String, PermissionResult)}  instead.
+     */
+    @Deprecated
     public ActivityManagePermission askPermission(String permission) {
         this.permissionsAsk = new String[]{permission};
         return ActivityManagePermission.this;
     }
 
+    /**
+     * Does some thing in old style.
+     *
+     * @deprecated use {@link #askCompactPermissions(String[], PermissionResult)} instead.
+     */
+    @Deprecated
     public ActivityManagePermission askPermissions(String permissions[]) {
         this.permissionsAsk = permissions;
         return ActivityManagePermission.this;
@@ -121,7 +135,7 @@ public class ActivityManagePermission extends AppCompatActivity {
                 if (granted) {
                     permissionResult.permissionGranted();
                 } else {
-                    permissionResult.permissionNotGranted();
+                    permissionResult.permissionDenied();
                 }
             }
         } else {
@@ -132,14 +146,14 @@ public class ActivityManagePermission extends AppCompatActivity {
     public void askCompactPermission(String permission, PermissionResult permissionResult) {
         KEY_PERMISSION = 200;
         permissionsAsk = new String[]{permission};
-        this.permissionResult=permissionResult;
+        this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
     }
 
     public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
         KEY_PERMISSION = 200;
         permissionsAsk = permissions;
-        this.permissionResult=permissionResult;
+        this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
     }
 

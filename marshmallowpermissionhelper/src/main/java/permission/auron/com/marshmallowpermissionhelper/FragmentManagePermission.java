@@ -123,7 +123,7 @@ public class FragmentManagePermission extends Fragment {
                 if (granted) {
                     permissionResult.permissionGranted();
                 } else {
-                    permissionResult.permissionNotGranted();
+                    permissionResult.permissionDenied();
                 }
             } else {
                 Log.e("ManagePermission", "permissionResult callback was null");

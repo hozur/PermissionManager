@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
 import permission.auron.com.marshmallowpermissionhelper.ActivityManagePermission;
 import permission.auron.com.marshmallowpermissionhelper.PermissionResult;
 import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
@@ -44,8 +43,8 @@ public class SecondActivity extends ActivityManagePermission {
                     }
 
                     @Override
-                    public void permissionNotGranted() {
-                        Log.d("SecondActivity","dienid");
+                    public void permissionDenied() {
+                        Log.d("SecondActivity", "denied");
                         //permission denied
                         //replace with your action
                     }
@@ -104,10 +103,12 @@ public class SecondActivity extends ActivityManagePermission {
             }
 
             @Override
-            public void permissionNotGranted() {
+            public void permissionDenied() {
                 //permission denied
                 //replace with your action
             }
+
+
         });
 
     }

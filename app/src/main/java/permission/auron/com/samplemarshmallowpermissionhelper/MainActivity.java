@@ -35,6 +35,7 @@ public class MainActivity extends ActivityManagePermission {
             @Override
             public void onClick(View view) {
                 //single permission
+
                 askPermission(PermissionUtils.Manifest_CAMERA)
                         .setPermissionResult(new PermissionResult() {
                             @Override
@@ -45,7 +46,7 @@ public class MainActivity extends ActivityManagePermission {
                             }
 
                             @Override
-                            public void permissionNotGranted() {
+                            public void permissionDenied() {
                                 //permission denied
                                 //replace with your action
                             }
@@ -60,7 +61,7 @@ public class MainActivity extends ActivityManagePermission {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
     }
@@ -69,7 +70,6 @@ public class MainActivity extends ActivityManagePermission {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null)
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-
     }
 
     @Override
@@ -113,9 +113,11 @@ public class MainActivity extends ActivityManagePermission {
                     }
 
                     @Override
-                    public void permissionNotGranted() {
+                    public void permissionDenied() {
                         //permission denied
                     }
+
+
                 })
                 .requestPermission(PermissionUtils.KEY_CAMERA);
     }

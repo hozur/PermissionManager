@@ -34,7 +34,7 @@ public class SampleFragment extends FragmentManagePermission {
                     }
 
                     @Override
-                    public void permissionNotGranted() {
+                    public void permissionDenied() {
                         //permission denied
                         //replace with your action
                     }
@@ -52,7 +52,7 @@ public class SampleFragment extends FragmentManagePermission {
                     }
 
                     @Override
-                    public void permissionNotGranted() {
+                    public void permissionDenied() {
                         //permission denied
                         //replace with your action
                     }

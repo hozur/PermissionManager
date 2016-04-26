@@ -30,6 +30,6 @@ public interface PermissionResult {
 
     void permissionGranted();
 
-    void permissionNotGranted();
+    void permissionDenied();
 
 }
