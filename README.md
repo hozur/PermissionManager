@@ -30,7 +30,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.0.8'
+ compile 'com.auron:permission-manage:1.0.9'
 }
 ```
 
@@ -49,26 +49,7 @@ public class MainActivity extends ActivityManagePermission {
 
 sample usage to ask camera permission
 
-```java
- askPermission(PermissionUtils.Manifest_CAMERA)
-                        .setPermissionResult(new PermissionResult() {
-                            @Override
-                            public void permissionGranted() {
-                                //permission granted
-                                //replace with your action
-                            }
 
-                            @Override
-                            public void permissionNotGranted() {
-                                //permission denied
-                                //replace with your action
-                            }
-                        })
-                        .requestPermission(PermissionUtils.KEY_CAMERA);
-```
-
-
-or you can also use the contracted form
 
 ```java
   askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
@@ -79,7 +60,7 @@ or you can also use the contracted form
                     }
 
                     @Override
-                    public void permissionNotGranted() {
+                    public void permissionDenied() {
                         //permission denied
                         //replace with your action
                     }
@@ -99,24 +80,6 @@ public class FragmentHome extends FragmentManagePermission {
 
 sample usage to ask camera permission
 
-```java
- askPermission(PermissionUtils.Manifest_CAMERA)
-                        .setPermissionResult(new PermissionResult() {
-                            @Override
-                            public void permissionGranted() {
-                                //permission granted
-                                //replace with your action
-                            }
-
-                            @Override
-                            public void permissionNotGranted() {
-                                //permission denied
-                                //replace with your action
-                            }
-                        })
-                        .requestPermission(PermissionUtils.KEY_CAMERA);
-```
-or you can also use the contracted form
 
 ```java
   askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
@@ -127,7 +90,7 @@ or you can also use the contracted form
                     }
 
                     @Override
-                    public void permissionNotGranted() {
+                    public void permissionDenied() {
                         //permission denied
                         //replace with your action
                     }
@@ -147,26 +110,6 @@ The permission class utils contains the permissions you need to ask runtime
 
 ### Multiple Permissions
 
-```java
-         askPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE})
-                .setPermissionResult(new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
-                    }
-
-                    @Override
-                    public void permissionNotGranted() {
-                        //permission denied
-                        //replace with your action
-                    }
-                })
-                .requestPermission(PermissionUtils.KEY_CAMERA);
-```
-in requestPermission() using one key.
-
-or you can also use the contracted form
 
 ```java
   askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
@@ -177,7 +120,7 @@ or you can also use the contracted form
             }
 
             @Override
-            public void permissionNotGranted() {
+            public void permissionDenied() {
                 //permission denied
                 //replace with your action
             }
