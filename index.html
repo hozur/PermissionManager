@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Marshmallowpermissionmanager by RurioLuca</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Marshmallowpermissionmanager</h1>
+        <p>Helper to ask permission on android marshmallow</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/RurioLuca/MarshmallowPermissionManager" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/RurioLuca/MarshmallowPermissionManager/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/RurioLuca/MarshmallowPermissionManager/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="marshmallowpermissionmanager" class="anchor" href="#marshmallowpermissionmanager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MarshmallowPermissionManager</h1>
+
+<p><a href="http://www.android.com"><img src="https://img.shields.io/badge/platform-Android-blue.svg?style=flat-square" alt="Platform (Android)"></a>
+<a href="https://android-arsenal.com/details/1/3234"><img src="https://img.shields.io/badge/Android%20Arsenal-MarshmallowPermissionManager-green.svg?style=true" alt=" Android Arsenal"></a></p>
+
+<h4>
+<a id="helper-to-ask-runtime-permission-on-android-marshmallow" class="anchor" href="#helper-to-ask-runtime-permission-on-android-marshmallow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helper to ask runtime permission on android marshmallow</h4>
+
+<p>The library takes care themselves to check whether a permit has already been agreed by the user or not.
+if the user has given consent call the system dialog for the acceptance</p>
+
+<p><img src="https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/permission.png" alt="Screen"></p>
+
+<h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h3>
+
+<p>The library requires Android <strong>API Level 7+</strong>.</p>
+
+<h3>
+<a id="import" class="anchor" href="#import" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Import</h3>
+
+<p>in build.gradle</p>
+
+<div class="highlight highlight-source-groovy-gradle"><pre><span class="pl-en">allprojects</span> {
+    repositories {
+        jcenter()
+    }
+}
+</pre></div>
+
+<div class="highlight highlight-source-groovy-gradle"><pre><span class="pl-en">dependencies</span> {
+ compile <span class="pl-s"><span class="pl-pds">'</span>com.auron:permission-manage:1.0.9<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h3>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
+
+<h4>
+<a id="activity" class="anchor" href="#activity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Activity</h4>
+
+<p>Activity extends ActivityManagePermission</p>
+
+<div class="highlight highlight-source-java"><pre>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MainActivity</span> <span class="pl-k">extends</span> <span class="pl-e">ActivityManagePermission</span> {
+
+}</pre></div>
+
+<p>sample usage to ask camera permission</p>
+
+<div class="highlight highlight-source-java"><pre>  askCompactPermission(<span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_CAMERA</span>, <span class="pl-k">new</span> <span class="pl-smi">PermissionResult</span>() {
+                    <span class="pl-k">@Override</span>
+                    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionGranted</span>() {
+                        <span class="pl-c">//permission granted</span>
+                        <span class="pl-c">//replace with your action</span>
+                    }
+
+                    <span class="pl-k">@Override</span>
+                    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionDenied</span>() {
+                        <span class="pl-c">//permission denied</span>
+                        <span class="pl-c">//replace with your action</span>
+                    }
+                });</pre></div>
+
+<h4>
+<a id="fragment" class="anchor" href="#fragment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fragment</h4>
+
+<p>FragmentHome extends FragmentManagePermission</p>
+
+<div class="highlight highlight-source-java"><pre>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">FragmentHome</span> <span class="pl-k">extends</span> <span class="pl-e">FragmentManagePermission</span> {
+
+}</pre></div>
+
+<p>sample usage to ask camera permission</p>
+
+<div class="highlight highlight-source-java"><pre>  askCompactPermission(<span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_CAMERA</span>, <span class="pl-k">new</span> <span class="pl-smi">PermissionResult</span>() {
+                    <span class="pl-k">@Override</span>
+                    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionGranted</span>() {
+                        <span class="pl-c">//permission granted</span>
+                        <span class="pl-c">//replace with your action</span>
+                    }
+
+                    <span class="pl-k">@Override</span>
+                    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionDenied</span>() {
+                        <span class="pl-c">//permission denied</span>
+                        <span class="pl-c">//replace with your action</span>
+                    }
+                });</pre></div>
+
+<h1>
+<a id="advance-usage" class="anchor" href="#advance-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advance Usage</h1>
+
+<h4>
+<a id="check-whether-a-permit-has-been-agreed" class="anchor" href="#check-whether-a-permit-has-been-agreed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>check whether a permit has been agreed</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">boolean</span> isGranted <span class="pl-k">=</span> isPermissionGranted(<span class="pl-smi">MainActivity</span><span class="pl-k">.</span><span class="pl-v">this</span>,<span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_WRITE_EXTERNAL_STORAGE</span>);</pre></div>
+
+<h4>
+<a id="permissionutils" class="anchor" href="#permissionutils" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PermissionUtils</h4>
+
+<p>The permission class utils contains the permissions you need to ask runtime</p>
+
+<h3>
+<a id="multiple-permissions" class="anchor" href="#multiple-permissions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple Permissions</h3>
+
+<div class="highlight highlight-source-java"><pre>  askCompactPermissions(<span class="pl-k">new</span> <span class="pl-smi">String</span>[]{<span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_CAMERA</span>, <span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_WRITE_EXTERNAL_STORAGE</span>}, <span class="pl-k">new</span> <span class="pl-smi">PermissionResult</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionGranted</span>() {
+                <span class="pl-c">//permission granted</span>
+                <span class="pl-c">//replace with your action</span>
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionDenied</span>() {
+                <span class="pl-c">//permission denied</span>
+                <span class="pl-c">//replace with your action</span>
+            }
+        });</pre></div>
+
+<p>it is not necessary to use an answer key</p>
+
+<h3>
+<a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developed By</h3>
+
+<p>Rurio Luca- <a href="mailto:rurio.luca@gmail.com">rurio.luca@gmail.com</a></p>
+
+<p><a href="https://it.linkedin.com/in/luca-rurio-5a4462107"><img src="https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/social/linkedin-icon.png" alt="Linkedin"> </a></p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2016 Rurio Luca</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/RurioLuca">RurioLuca</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
