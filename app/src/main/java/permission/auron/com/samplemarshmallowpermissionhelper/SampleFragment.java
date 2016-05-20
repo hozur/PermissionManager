@@ -1,6 +1,7 @@
 package permission.auron.com.samplemarshmallowpermissionhelper;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,6 @@ import permission.auron.com.marshmallowpermissionhelper.FragmentManagePermission
 import permission.auron.com.marshmallowpermissionhelper.PermissionResult;
 import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class SampleFragment extends FragmentManagePermission {
 
     @Override
@@ -23,40 +21,42 @@ public class SampleFragment extends FragmentManagePermission {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
 
-        askPermission(PermissionUtils.Manifest_CAMERA)
-                .setPermissionResult(new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
+            }
 
-                    }
-
-                    @Override
-                    public void permissionDenied() {
-                        //permission denied
-                        //replace with your action
-                    }
-                })
-                .requestPermission(PermissionUtils.KEY_CAMERA);
+            @Override
+            public void permissionDenied() {
+                Log.d("SecondActivity", "denied");
+                //permission denied
+                //replace with your action
+            }
+        });
     }
 
     private void sampleAskMultiplePermission() {
-        askPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE})
-                .setPermissionResult(new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
-                    }
 
-                    @Override
-                    public void permissionDenied() {
-                        //permission denied
-                        //replace with your action
-                    }
-                })
-                .requestPermission(PermissionUtils.KEY_CAMERA);
+
+
+        askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+
+            }
+
+            @Override
+            public void permissionDenied() {
+                Log.d("SecondActivity", "denied");
+                //permission denied
+                //replace with your action
+            }
+        });
+
     }
 }

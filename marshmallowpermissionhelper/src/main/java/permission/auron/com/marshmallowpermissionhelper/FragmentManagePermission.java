@@ -55,12 +55,12 @@ public class FragmentManagePermission extends Fragment {
         setRetainInstance(false);
     }
 
-
+    @Deprecated
     public FragmentManagePermission askPermission(String permission) {
         this.permissionsAsk = new String[]{permission};
         return FragmentManagePermission.this;
     }
-
+    @Deprecated
     public FragmentManagePermission askPermissions(String permissions[]) {
         this.permissionsAsk = permissions;
         return FragmentManagePermission.this;
