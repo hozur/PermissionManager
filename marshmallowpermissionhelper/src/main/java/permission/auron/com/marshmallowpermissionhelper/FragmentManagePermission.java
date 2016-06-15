@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -55,33 +56,24 @@ public class FragmentManagePermission extends Fragment {
         setRetainInstance(false);
     }
 
-    @Deprecated
-    public FragmentManagePermission askPermission(String permission) {
-        this.permissionsAsk = new String[]{permission};
-        return FragmentManagePermission.this;
-    }
-    @Deprecated
-    public FragmentManagePermission askPermissions(String permissions[]) {
-        this.permissionsAsk = permissions;
-        return FragmentManagePermission.this;
-    }
-
-    public FragmentManagePermission setPermissionResult(PermissionResult permissionResult) {
-        this.permissionResult = permissionResult;
-        return FragmentManagePermission.this;
-    }
-
-    public FragmentManagePermission requestPermission(int keyPermission) {
-        KEY_PERMISSION = keyPermission;
-        internalRequestPermission(permissionsAsk);
-        return FragmentManagePermission.this;
-    }
-
-
     public boolean isPermissionGranted(Context context, String permission) {
         return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
     }
 
+
+    public boolean isPermissionsGranted(Context context, String permissions[]) {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            return true;
+
+        boolean granted = true;
+
+        for (String permission : permissions) {
+            if(!(ContextCompat.checkSelfPermission(context, permission)==PackageManager.PERMISSION_GRANTED))
+                granted=false;
+        }
+
+        return granted;
+    }
 
     private void internalRequestPermission(String[] permissionAsk) {
         String arrayPermissionNotGranted[];

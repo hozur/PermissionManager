@@ -91,7 +91,22 @@ public class ActivityManagePermission extends AppCompatActivity {
 
 
     public boolean isPermissionGranted(Context context, String permission) {
-        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+    }
+
+
+    public boolean isPermissionsGranted(Context context, String permissions[]) {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            return true;
+
+        boolean granted = true;
+
+        for (String permission : permissions) {
+            if(!(ActivityCompat.checkSelfPermission(context, permission)==PackageManager.PERMISSION_GRANTED))
+                granted=false;
+        }
+
+        return granted;
     }
 
 
