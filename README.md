@@ -30,7 +30,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.1.0'
+ compile 'com.auron:permission-manage:1.1.1'
 }
 ```
 
@@ -104,6 +104,13 @@ sample usage to ask camera permission
 ```java
 boolean isGranted = isPermissionGranted(MainActivity.this,PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE);
 ```
+
+#### check whether multiple permission has been agreed
+
+```java
+boolean isGranted = isPermissionsGranted(MainActivity.this,new String[]{PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE,PermissionUtils.Manifest_CAMERA});
+```
+
 #### PermissionUtils
 
 The permission class utils contains the permissions you need to ask runtime
