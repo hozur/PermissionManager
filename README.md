@@ -45,7 +45,7 @@ Activity extends ActivityManagePermission
 public class MainActivity extends ActivityManagePermission {
 
 }
-```
+```
 
 sample usage to ask camera permission
 
@@ -66,7 +66,7 @@ sample usage to ask camera permission
                     }
                        @Override
                     public void permissionForeverDienid() {
-                     // user has check 'never ask again'
+                     // user has check never ask again
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                      //  Uri uri = Uri.fromParts("package", getPackageName(), null);
@@ -105,7 +105,7 @@ sample usage to ask camera permission
                     }
                      @Override
                     public void permissionForeverDienid() {
-                     // user has check 'never ask again'
+                     // user has check never ask again
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                      //  Uri uri = Uri.fromParts("package", getPackageName(), null);
