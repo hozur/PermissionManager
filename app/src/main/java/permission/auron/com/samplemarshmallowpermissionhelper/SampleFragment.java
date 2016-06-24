@@ -35,11 +35,15 @@ public class SampleFragment extends FragmentManagePermission {
                 //permission denied
                 //replace with your action
             }
+
+            @Override
+            public void permissionForeverDienid() {
+
+            }
         });
     }
 
     private void sampleAskMultiplePermission() {
-
 
 
         askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
@@ -55,6 +59,11 @@ public class SampleFragment extends FragmentManagePermission {
                 Log.d("SecondActivity", "denied");
                 //permission denied
                 //replace with your action
+            }
+
+            @Override
+            public void permissionForeverDienid() {
+
             }
         });
 

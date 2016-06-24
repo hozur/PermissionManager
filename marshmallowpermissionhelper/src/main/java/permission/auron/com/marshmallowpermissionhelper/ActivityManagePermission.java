@@ -36,12 +36,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
  * Created by luca on 2/29/16.
  */
-
+@SuppressWarnings({"MissingPermission"})
 public class ActivityManagePermission extends AppCompatActivity {
 
 
@@ -56,54 +58,25 @@ public class ActivityManagePermission extends AppCompatActivity {
     }
 
 
-    /**
-     * Does some thing in old style.
-     *
-     * @deprecated use {@link #askCompactPermission(String, PermissionResult)}  instead.
-     */
-    @Deprecated
-    public ActivityManagePermission askPermission(String permission) {
-        this.permissionsAsk = new String[]{permission};
-        return ActivityManagePermission.this;
-    }
-
-    /**
-     * Does some thing in old style.
-     *
-     * @deprecated use {@link #askCompactPermissions(String[], PermissionResult)} instead.
-     */
-    @Deprecated
-    public ActivityManagePermission askPermissions(String permissions[]) {
-        this.permissionsAsk = permissions;
-        return ActivityManagePermission.this;
-    }
-
-    public ActivityManagePermission setPermissionResult(PermissionResult permissionResult) {
-        this.permissionResult = permissionResult;
-        return ActivityManagePermission.this;
-    }
-
-    public ActivityManagePermission requestPermission(int keyPermission) {
-        KEY_PERMISSION = keyPermission;
-        internalRequestPermission(permissionsAsk);
-        return ActivityManagePermission.this;
-    }
 
 
+
+    @SuppressWarnings({"MissingPermission"})
     public boolean isPermissionGranted(Context context, String permission) {
-        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+        boolean granted = (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+        return granted;
     }
 
 
     public boolean isPermissionsGranted(Context context, String permissions[]) {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return true;
 
         boolean granted = true;
 
         for (String permission : permissions) {
-            if(!(ActivityCompat.checkSelfPermission(context, permission)==PackageManager.PERMISSION_GRANTED))
-                granted=false;
+            if (!(ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED))
+                granted = false;
         }
 
         return granted;
@@ -131,6 +104,7 @@ public class ActivityManagePermission extends AppCompatActivity {
             arrayPermissionNotGranted = new String[permissionsNotGranted.size()];
             arrayPermissionNotGranted = permissionsNotGranted.toArray(arrayPermissionNotGranted);
             ActivityCompat.requestPermissions(ActivityManagePermission.this, arrayPermissionNotGranted, KEY_PERMISSION);
+
         }
 
 
@@ -139,23 +113,39 @@ public class ActivityManagePermission extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
-        if (requestCode == KEY_PERMISSION) {
-            boolean granted = true;
-
-            for (int grantResult : grantResults) {
-                if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
-                    granted = false;
-            }
-            if (permissionResult != null) {
-                if (granted) {
-                    permissionResult.permissionGranted();
-                } else {
-                    permissionResult.permissionDenied();
-                }
-            }
-        } else {
-            Log.e("ManagePermission", "permissionResult callback was null");
+        if (requestCode != KEY_PERMISSION) {
+            return;
         }
+
+        List<String> permissionDienid = new LinkedList<>();
+        boolean granted = true;
+
+        for (int i = 0; i < grantResults.length; i++) {
+
+            if (!(grantResults[i] == PackageManager.PERMISSION_GRANTED)) {
+                granted = false;
+                permissionDienid.add(permissions[i]);
+            }
+
+        }
+
+        if (permissionResult != null) {
+            if (granted) {
+                permissionResult.permissionGranted();
+            } else {
+                for (String s : permissionDienid) {
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, s)) {
+                        permissionResult.permissionForeverDienid();
+                        return;
+                    }
+                }
+
+                permissionResult.permissionDenied();
+
+
+            }
+        }
+
     }
 
     public void askCompactPermission(String permission, PermissionResult permissionResult) {
@@ -163,13 +153,16 @@ public class ActivityManagePermission extends AppCompatActivity {
         permissionsAsk = new String[]{permission};
         this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
+
     }
 
     public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
+
         KEY_PERMISSION = 200;
         permissionsAsk = permissions;
         this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
+
     }
 
 

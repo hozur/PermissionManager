@@ -1,11 +1,15 @@
 package permission.auron.com.samplemarshmallowpermissionhelper;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -16,8 +20,9 @@ import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
 public class MainActivity extends ActivityManagePermission {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    public static String TAG = MainActivity.class.getSimpleName();
     private ImageView imageView;
-
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,9 @@ public class MainActivity extends ActivityManagePermission {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ((FloatingActionButton) findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
+        floatingActionButton = ((FloatingActionButton) findViewById(R.id.fab));
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //single permission
@@ -43,8 +50,18 @@ public class MainActivity extends ActivityManagePermission {
 
                     @Override
                     public void permissionDenied() {
+                        Log.d(TAG, "dienid");
                         //permission denied
                         //replace with your action
+                    }
+
+                    @Override
+                    public void permissionForeverDienid() {
+                        Log.d(TAG, "forever dienid");
+                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
                     }
                 });
             }
@@ -82,6 +99,11 @@ public class MainActivity extends ActivityManagePermission {
             public void permissionDenied() {
                 //permission denied
                 //replace with your action
+            }
+
+            @Override
+            public void permissionForeverDienid() {
+
             }
         });
 

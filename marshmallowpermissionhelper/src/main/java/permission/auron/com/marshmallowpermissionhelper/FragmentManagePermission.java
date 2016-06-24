@@ -36,12 +36,14 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
  * Created by luca on 2/29/16.
  */
-
+@SuppressWarnings({"MissingPermission"})
 public class FragmentManagePermission extends Fragment {
 
 
@@ -56,20 +58,22 @@ public class FragmentManagePermission extends Fragment {
         setRetainInstance(false);
     }
 
+    @SuppressWarnings({"MissingPermission"})
     public boolean isPermissionGranted(Context context, String permission) {
         return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
     }
 
 
+    @SuppressWarnings({"MissingPermission"})
     public boolean isPermissionsGranted(Context context, String permissions[]) {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return true;
 
         boolean granted = true;
 
         for (String permission : permissions) {
-            if(!(ContextCompat.checkSelfPermission(context, permission)==PackageManager.PERMISSION_GRANTED))
-                granted=false;
+            if (!(ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED))
+                granted = false;
         }
 
         return granted;
@@ -104,22 +108,30 @@ public class FragmentManagePermission extends Fragment {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
 
-        if (requestCode == KEY_PERMISSION) {
-            boolean granted = true;
+        if (requestCode != KEY_PERMISSION) {
+            return;
+        }
+        boolean granted = true;
+        List<String> permissionDienid = new LinkedList<>();
 
-            for (int grantResult : grantResults) {
-                if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
-                    granted = false;
-            }
-            if (permissionResult != null) {
-                if (granted) {
-                    permissionResult.permissionGranted();
-                } else {
-                    permissionResult.permissionDenied();
-                }
+        for (int grantResult : grantResults) {
+            if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
+                granted = false;
+        }
+        if (permissionResult != null) {
+            if (granted) {
+                permissionResult.permissionGranted();
             } else {
-                Log.e("ManagePermission", "permissionResult callback was null");
+
+                for (String s : permissionDienid) {
+                    if (!shouldShowRequestPermissionRationale(s)) {
+                        permissionResult.permissionForeverDienid();
+                        return;
+                    }
+                }
+                permissionResult.permissionDenied();
             }
+
         }
 
     }
