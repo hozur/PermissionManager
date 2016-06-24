@@ -9,7 +9,7 @@
 The library takes care themselves to check whether a permit has already been agreed by the user or not.
 if the user has given consent call the system dialog for the acceptance
 
-![Screen](https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/permission.png)
+![Screen](https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/permission.jpg)
 
 ### Requirements
 
@@ -30,7 +30,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.1.1'
+ compile 'com.auron:permission-manage:1.1.2'
 }
 ```
 
@@ -45,7 +45,7 @@ Activity extends ActivityManagePermission
 public class MainActivity extends ActivityManagePermission {
 
 }
-```
+```
 
 sample usage to ask camera permission
 
@@ -63,6 +63,15 @@ sample usage to ask camera permission
                     public void permissionDenied() {
                         //permission denied
                         //replace with your action
+                    }
+                       @Override
+                    public void permissionForeverDienid() {
+                        // user has check 'never ask again'
+                        // you need to open setting manually
+                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
                     }
                 });
 ```
@@ -93,6 +102,15 @@ sample usage to ask camera permission
                     public void permissionDenied() {
                         //permission denied
                         //replace with your action
+                    }
+                     @Override
+                    public void permissionForeverDienid() {
+                        // user has check 'never ask again'
+                        // you need to open setting manually
+                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
                     }
                 });
 ```
@@ -131,6 +149,15 @@ The permission class utils contains the permissions you need to ask runtime
                 //permission denied
                 //replace with your action
             }
+             @Override
+                    public void permissionForeverDienid() {
+                        // user has check 'never ask again'
+                        // you need to open setting manually
+                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
+                    }
         });
 ```
 it is not necessary to use an answer key
@@ -140,6 +167,17 @@ it is not necessary to use an answer key
 Rurio Luca- [rurio.luca@gmail.com](mailto:rurio.luca@gmail.com)
 
 [![Linkedin](https://raw.githubusercontent.com/RurioLuca/MarshmallowPermissionManager/master/img/social/linkedin-icon.png) ](https://it.linkedin.com/in/luca-rurio-5a4462107)
+
+###App using MarshmallowPermissionManager
+=======
+
+  * [Material Qr](https://play.google.com/store/apps/details?id=qrreader.com.studios.it.qrreader)
+  * [Volo](https://play.google.com/store/apps/details?id=volo.tsc.it.volo)
+  * [Volo Oss](https://play.google.com/store/apps/details?id=volontario.volo.tsc.it.volontario)
+  * [Gespat](https://play.google.com/store/apps/details?id=gespat.tsc.it.gespat)
+
+send me your apps!
+rurio.luca@gmail.com
 
 # License
 
