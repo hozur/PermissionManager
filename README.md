@@ -66,12 +66,12 @@ sample usage to ask camera permission
                     }
                        @Override
                     public void permissionForeverDienid() {
-                        // user has check 'never ask again'
-                        // you need to open setting manually
-                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                     //  Uri uri = Uri.fromParts("package", getPackageName(), null);
+                     //   intent.setData(uri);
+                     //  startActivityForResult(intent, REQUEST_PERMISSION_SETTING); 
                     }
                 });
 ```
@@ -105,12 +105,12 @@ sample usage to ask camera permission
                     }
                      @Override
                     public void permissionForeverDienid() {
-                        // user has check 'never ask again'
-                        // you need to open setting manually
-                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                     //  Uri uri = Uri.fromParts("package", getPackageName(), null);
+                     //   intent.setData(uri);
+                     //  startActivityForResult(intent, REQUEST_PERMISSION_SETTING); 
                     }
                 });
 ```
@@ -151,12 +151,12 @@ The permission class utils contains the permissions you need to ask runtime
             }
              @Override
                     public void permissionForeverDienid() {
-                        // user has check 'never ask again'
-                        // you need to open setting manually
-                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                     //  Uri uri = Uri.fromParts("package", getPackageName(), null);
+                     //   intent.setData(uri);
+                     //  startActivityForResult(intent, REQUEST_PERMISSION_SETTING); 
                     }
         });
 ```
