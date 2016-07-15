@@ -162,6 +162,9 @@ The permission class utils contains the permissions you need to ask runtime
 ```
 it is not necessary to use an answer key
 
+###Javadoc
+[Javadoc](http://rurioluca.github.io/MarshmallowPermissionManager/javadoc/) thanks to [rebus007](https://github.com/rebus007)
+
 
 ###Developed By
 Rurio Luca- [rurio.luca@gmail.com](mailto:rurio.luca@gmail.com)
