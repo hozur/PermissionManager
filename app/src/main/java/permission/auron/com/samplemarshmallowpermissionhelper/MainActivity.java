@@ -6,10 +6,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.ImageView;
 
@@ -50,14 +50,14 @@ public class MainActivity extends ActivityManagePermission {
 
                     @Override
                     public void permissionDenied() {
-                        Log.d(TAG, "dienid");
+
                         //permission denied
                         //replace with your action
                     }
 
                     @Override
                     public void permissionForeverDienid() {
-                        Log.d(TAG, "forever dienid");
+
                      /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                         Uri uri = Uri.fromParts("package", getPackageName(), null);
                         intent.setData(uri);
