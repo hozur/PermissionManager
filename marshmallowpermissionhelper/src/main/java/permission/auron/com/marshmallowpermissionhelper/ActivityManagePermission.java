@@ -47,7 +47,7 @@ import java.util.List;
 public class ActivityManagePermission extends AppCompatActivity {
 
 
-    private int KEY_PERMISSION = 0;
+    private final int KEY_PERMISSION = 200;
     private PermissionResult permissionResult;
     private String permissionsAsk[];
 
@@ -58,16 +58,21 @@ public class ActivityManagePermission extends AppCompatActivity {
     }
 
 
-
-
-
-    @SuppressWarnings({"MissingPermission"})
+    /**
+     * @param context current Context
+     * @param permission String permission to ask
+     * @return boolean true/false
+     */
     public boolean isPermissionGranted(Context context, String permission) {
         boolean granted = (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
         return granted;
     }
 
-
+    /**
+     * @param context current Context
+     * @param permissions String[] permission to ask
+     * @return boolean true/false
+     */
     public boolean isPermissionsGranted(Context context, String permissions[]) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return true;
@@ -148,17 +153,21 @@ public class ActivityManagePermission extends AppCompatActivity {
 
     }
 
+    /**
+     * @param permission String permission ask
+     * @param permissionResult callback PermissionResult
+     */
     public void askCompactPermission(String permission, PermissionResult permissionResult) {
-        KEY_PERMISSION = 200;
         permissionsAsk = new String[]{permission};
         this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
 
     }
-
+    /**
+     * @param permissions String[] permissions ask
+     * @param permissionResult callback PermissionResult
+     */
     public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
-
-        KEY_PERMISSION = 200;
         permissionsAsk = permissions;
         this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);

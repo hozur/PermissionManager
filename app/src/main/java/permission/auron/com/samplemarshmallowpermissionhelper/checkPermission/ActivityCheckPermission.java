@@ -12,9 +12,8 @@ import permission.auron.com.samplemarshmallowpermissionhelper.R;
  */
 public class ActivityCheckPermission extends ActivityManagePermission {
 
-    //    private GoogleApiClient googleApiClient;
+
     @Override
-    @SuppressWarnings({"MissingPermission"})
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -24,7 +23,7 @@ public class ActivityCheckPermission extends ActivityManagePermission {
 
         if (isPermissionsGranted(ActivityCheckPermission.this, new String[]{PermissionUtils.Manifest_ACCESS_FINE_LOCATION, PermissionUtils.Manifest_ACCESS_COARSE_LOCATION})) {
 
-            //      Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+            //Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
 
 
         }
