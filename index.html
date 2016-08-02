@@ -43,7 +43,9 @@
 <a id="marshmallowpermissionmanager" class="anchor" href="#marshmallowpermissionmanager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MarshmallowPermissionManager</h1>
 
 <p><a href="http://www.android.com"><img src="https://img.shields.io/badge/platform-Android-blue.svg?style=flat-square" alt="Platform (Android)"></a>
-<a href="https://android-arsenal.com/details/1/3234"><img src="https://img.shields.io/badge/Android%20Arsenal-MarshmallowPermissionManager-green.svg?style=true" alt=" Android Arsenal"></a></p>
+<a href="https://android-arsenal.com/details/1/3234"><img src="https://img.shields.io/badge/Android%20Arsenal-MarshmallowPermissionManager-green.svg?style=true" alt=" Android Arsenal"></a>
+<a href="https://github.com/RurioLuca/MarshmallowPermissionManager/blob/master/License"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license"></a>
+<a href="https://www.codewake.com/p/marshmallowpermissionmanager"><img src="https://www.codewake.com/badges/ask_question_flat_square.svg" alt="Codewake"></a></p>
 
 <h4>
 <a id="helper-to-ask-runtime-permission-on-android-marshmallow" class="anchor" href="#helper-to-ask-runtime-permission-on-android-marshmallow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helper to ask runtime permission on android marshmallow</h4>
@@ -71,7 +73,7 @@ if the user has given consent call the system dialog for the acceptance</p>
 </pre></div>
 
 <div class="highlight highlight-source-groovy-gradle"><pre><span class="pl-en">dependencies</span> {
- compile <span class="pl-s"><span class="pl-pds">'</span>com.auron:permission-manage:1.1.2<span class="pl-pds">'</span></span>
+ compile <span class="pl-s"><span class="pl-pds">'</span>com.auron:permission-manage:1.1.4<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <h3>
@@ -191,7 +193,45 @@ if the user has given consent call the system dialog for the acceptance</p>
                     }
         });</pre></div>
 
-<p>it is not necessary to use an answer key</p>
+<h3>
+<a id="group-permissions" class="anchor" href="#group-permissions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Group Permissions</h3>
+
+<div class="highlight highlight-source-java"><pre>  askCompactPermission(<span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_GROUP_STORAGE</span>, <span class="pl-smi">PermissionUtils</span><span class="pl-k">.</span><span class="pl-smi">Manifest_WRITE_EXTERNAL_STORAGE</span>}, <span class="pl-k">new</span> <span class="pl-smi">PermissionResult</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionGranted</span>() {
+                <span class="pl-c">//permission granted</span>
+                <span class="pl-c">//replace with your action</span>
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionDenied</span>() {
+                <span class="pl-c">//permission denied</span>
+                <span class="pl-c">//replace with your action</span>
+            }
+             <span class="pl-k">@Override</span>
+                    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">permissionForeverDienid</span>() {
+                     <span class="pl-c">// user has check 'never ask again'</span>
+                     <span class="pl-c">// you need to open setting manually</span>
+                     <span class="pl-c">//  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);</span>
+                     <span class="pl-c">//  Uri uri = Uri.fromParts("package", getPackageName(), null);</span>
+                     <span class="pl-c">//   intent.setData(uri);</span>
+                     <span class="pl-c">//  startActivityForResult(intent, REQUEST_PERMISSION_SETTING); </span>
+                    }
+        });</pre></div>
+
+<h4>
+<a id="open-setting-application" class="anchor" href="#open-setting-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Open Setting Application</h4>
+
+<p>need class extend FragmentManagePermission or ActivityManagePermission</p>
+
+<div class="highlight highlight-source-java"><pre>
+ openSettingsApp(<span class="pl-smi">MainActivity</span><span class="pl-k">.</span><span class="pl-v">this</span>);
+</pre></div>
+
+<h3>
+<a id="javadoc" class="anchor" href="#javadoc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javadoc</h3>
+
+<p><a href="http://rurioluca.github.io/MarshmallowPermissionManager/javadoc/">Javadoc</a> thanks to <a href="https://github.com/rebus007">rebus007</a></p>
 
 <h3>
 <a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developed By</h3>
