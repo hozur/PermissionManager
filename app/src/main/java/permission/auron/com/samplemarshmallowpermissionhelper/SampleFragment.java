@@ -27,6 +27,7 @@ public class SampleFragment extends FragmentManagePermission {
                 //permission granted
                 //replace with your action
 
+
             }
 
             @Override

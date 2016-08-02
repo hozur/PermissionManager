@@ -1,15 +1,11 @@
 package permission.auron.com.samplemarshmallowpermissionhelper;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-
 import android.view.View;
 import android.widget.ImageView;
 
@@ -39,6 +35,8 @@ public class MainActivity extends ActivityManagePermission {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 //single permission
                 askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
                     @Override
@@ -46,6 +44,7 @@ public class MainActivity extends ActivityManagePermission {
                         //permission granted
                         //replace with your action
                         dispatchTakePictureIntent();
+
                     }
 
                     @Override
@@ -58,10 +57,8 @@ public class MainActivity extends ActivityManagePermission {
                     @Override
                     public void permissionForeverDienid() {
 
-                     /*  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, REQUEST_PERMISSION_SETTING); */
+                        openSettingsApp(MainActivity.this);
+
                     }
                 });
             }

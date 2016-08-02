@@ -57,53 +57,14 @@ public class PermissionUtils {
     public static final String Manifest_RECEIVE_WAP_PUSH = Manifest.permission.RECEIVE_WAP_PUSH;
     public static final String Manifest_RECEIVE_MMS = Manifest.permission.RECEIVE_MMS;
 
-    @Deprecated
-    public static final int KEY_BODY_SENSORS = 50;
-    @Deprecated
-    public static final int KEY_READ_CALENDAR = 51;
-    @Deprecated
-    public static final int KEY_WRITE_CALENDAR = 52;
-    @Deprecated
-    public static final int KEY_READ_CONTACTS = 53;
-    @Deprecated
-    public static final int KEY_WRITE_CONTACTS = 54;
-    @Deprecated
-    public static final int KEY_GET_ACCOUNTS = 55;
-    @Deprecated
-    public static final int KEY_READ_EXTERNAL_STORAGE = 56;
-    @Deprecated
-    public static final int KEY_WRITE_EXTERNAL_STORAGE = 57;
-    @Deprecated
-    public static final int KEY_ACCESS_FINE_LOCATION = 58;
-    @Deprecated
-    public static final int KEY_ACCESS_COARSE_LOCATION = 59;
-    @Deprecated
-    public static final int KEY_RECORD_AUDIO = 60;
-    @Deprecated
-    public static final int KEY_READ_PHONE_STATE = 61;
-    @Deprecated
-    public static final int KEY_CALL_PHONE = 62;
-    @Deprecated
-    public static final int KEY_READ_CALL_LOG = 63;
-    @Deprecated
-    public static final int KEY_WRITE_CALL_LOG = 64;
-    @Deprecated
-    public static final int KEY_ADD_VOICEMAIL = 65;
-    @Deprecated
-    public static final int KEY_USE_SIP = 66;
-    @Deprecated
-    public static final int KEY_PROCESS_OUTGOING_CALLS = 67;
-    @Deprecated
-    public static final int KEY_CAMERA = 68;
-    @Deprecated
-    public static final int KEY_SEND_SMS = 69;
-    @Deprecated
-    public static final int KEY_RECEIVE_SMS = 70;
-    @Deprecated
-    public static final int KEY_READ_SMS = 71;
-    @Deprecated
-    public static final int KEY_RECEIVE_WAP_PUSH = 72;
-    @Deprecated
-    public static final int KEY_RECEIVE_MMS = 73;
+    public static final String Manifest_GROUP_CALENDAR=Manifest.permission_group.CALENDAR;
+    public static final String Manifest_GROUP_CAMERA=Manifest.permission_group.CAMERA;
+    public static final String Manifest_GROUP_CONTACTS=Manifest.permission_group.CONTACTS;
+    public static final String Manifest_GROUP_LOCATION=Manifest.permission_group.LOCATION;
+    public static final String Manifest_GROUP_MICROPHONE=Manifest.permission_group.MICROPHONE;
+    public static final String Manifest_GROUP_PHONE=Manifest.permission_group.PHONE;
+    public static final String Manifest_GROUP_SENSORS=Manifest.permission_group.SENSORS;
+    public static final String Manifest_GROUP_SMS=Manifest.permission_group.SMS;
+    public static final String Manifest_GROUP_STORAGE=Manifest.permission_group.STORAGE;
 
 }
