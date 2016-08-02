@@ -33,7 +33,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.1.3'
+ compile 'com.auron:permission-manage:1.1.4'
 }
 ```
 
@@ -163,8 +163,42 @@ The permission class utils contains the permissions you need to ask runtime
                     }
         });
 ```
-it is not necessary to use an answer key
+### Group Permissions
 
+
+```java
+  askCompactPermission(PermissionUtils.Manifest_GROUP_STORAGE, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+            }
+
+            @Override
+            public void permissionDenied() {
+                //permission denied
+                //replace with your action
+            }
+             @Override
+                    public void permissionForeverDienid() {
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                     //  Uri uri = Uri.fromParts("package", getPackageName(), null);
+                     //   intent.setData(uri);
+                     //  startActivityForResult(intent, REQUEST_PERMISSION_SETTING); 
+                    }
+        });
+```
+#### Open Setting Application
+
+need class extend FragmentManagePermission or ActivityManagePermission
+
+```java
+
+ openSettingsApp(MainActivity.this);
+
+```
 ###Javadoc
 [Javadoc](http://rurioluca.github.io/MarshmallowPermissionManager/javadoc/) thanks to [rebus007](https://github.com/rebus007)
 
