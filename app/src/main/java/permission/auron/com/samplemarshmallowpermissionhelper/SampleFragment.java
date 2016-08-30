@@ -38,7 +38,7 @@ public class SampleFragment extends FragmentManagePermission {
             }
 
             @Override
-            public void permissionForeverDienid() {
+            public void permissionForeverDenied() {
 
             }
         });
@@ -63,7 +63,7 @@ public class SampleFragment extends FragmentManagePermission {
             }
 
             @Override
-            public void permissionForeverDienid() {
+            public void permissionForeverDenied() {
 
             }
         });
