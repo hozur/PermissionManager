@@ -32,6 +32,6 @@ public interface PermissionResult {
 
     void permissionDenied();
 
-    void permissionForeverDienid();
+    void permissionForeverDenied();
 
 }
