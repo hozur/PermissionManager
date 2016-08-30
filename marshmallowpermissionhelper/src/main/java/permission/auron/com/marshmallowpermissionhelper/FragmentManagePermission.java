@@ -121,7 +121,7 @@ public class FragmentManagePermission extends Fragment {
             return;
         }
         boolean granted = true;
-        List<String> permissionDienid = new LinkedList<>();
+        List<String> permissionDenied = new LinkedList<>();
 
         for (int grantResult : grantResults) {
             if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
@@ -132,9 +132,9 @@ public class FragmentManagePermission extends Fragment {
                 permissionResult.permissionGranted();
             } else {
 
-                for (String s : permissionDienid) {
+                for (String s : permissionDenied) {
                     if (!shouldShowRequestPermissionRationale(s)) {
-                        permissionResult.permissionForeverDienid();
+                        permissionResult.permissionForeverDenied();
                         return;
                     }
                 }
