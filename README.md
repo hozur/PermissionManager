@@ -68,7 +68,7 @@ sample usage to ask camera permission
                         //replace with your action
                     }
                        @Override
-                    public void permissionForeverDienid() {
+                    public void permissionForeverDenied() {
                      // user has check never ask again
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -107,7 +107,7 @@ sample usage to ask camera permission
                         //replace with your action
                     }
                      @Override
-                    public void permissionForeverDienid() {
+                    public void permissionForeverDenied() {
                      // user has check never ask again
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -153,7 +153,7 @@ The permission class utils contains the permissions you need to ask runtime
                 //replace with your action
             }
              @Override
-                    public void permissionForeverDienid() {
+                    public void permissionForeverDenied() {
                      // user has check 'never ask again'
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -180,7 +180,7 @@ The permission class utils contains the permissions you need to ask runtime
                 //replace with your action
             }
              @Override
-                    public void permissionForeverDienid() {
+                    public void permissionForeverDenied() {
                      // user has check 'never ask again'
                      // you need to open setting manually
                      //  Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
