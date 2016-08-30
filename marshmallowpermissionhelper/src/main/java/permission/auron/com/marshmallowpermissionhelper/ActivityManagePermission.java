@@ -124,14 +124,14 @@ public class ActivityManagePermission extends AppCompatActivity {
             return;
         }
 
-        List<String> permissionDienid = new LinkedList<>();
+        List<String> permissionDenied = new LinkedList<>();
         boolean granted = true;
 
         for (int i = 0; i < grantResults.length; i++) {
 
             if (!(grantResults[i] == PackageManager.PERMISSION_GRANTED)) {
                 granted = false;
-                permissionDienid.add(permissions[i]);
+                permissionDenied.add(permissions[i]);
             }
 
         }
@@ -140,9 +140,9 @@ public class ActivityManagePermission extends AppCompatActivity {
             if (granted) {
                 permissionResult.permissionGranted();
             } else {
-                for (String s : permissionDienid) {
+                for (String s : permissionDenied) {
                     if (!ActivityCompat.shouldShowRequestPermissionRationale(this, s)) {
-                        permissionResult.permissionForeverDienid();
+                        permissionResult.permissionForeverDenied();
                         return;
                     }
                 }
