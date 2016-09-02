@@ -1,1 +1,1 @@
-include ':app', ':marshmallowpermissionhelper'
+include ':app', ':permissionhelper'

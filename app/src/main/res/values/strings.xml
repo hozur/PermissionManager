@@ -1,4 +1,18 @@
 <resources>
-    <string name="app_name">MarshmallowPermissionHelper</string>
+    <string name="app_name">PermissionHelper</string>
     <string name="action_settings">Settings</string>
+    <string name="askSingleActivity">Activity ask single</string>
+    <string name="askSingleFragment">ask Single in fragment</string>
+    <string name="checkPermission">Check permission</string>
+    <string name="askMultiPermission">Ask multiple permission Activity</string>
+
+    <string name="attention">Attention</string>
+    <string name="messageperm">Attention this action needs your permission to run you access the settings?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_permission">Choose permission to test</string>
+    <string name="granted">Granted!</string>
+    <string name="messagegranted">Permission was granted</string>
+    <string name="denied">Denied</string>
+    <string name="messagedenied">Permission was Denied</string>
 </resources>

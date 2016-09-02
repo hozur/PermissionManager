@@ -15,23 +15,10 @@
         app:theme="@style/ToolbarTheme" />
 
 
-    <ImageView
-        android:id="@+id/image"
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_margin="32dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_photo_camera_white_18dp" />
+        android:layout_below="@+id/toolbar" />
 
 </RelativeLayout>

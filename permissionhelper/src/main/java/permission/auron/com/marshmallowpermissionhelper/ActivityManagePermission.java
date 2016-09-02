@@ -35,7 +35,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -61,17 +60,17 @@ public class ActivityManagePermission extends AppCompatActivity {
 
 
     /**
-     * @param context current Context
+     * @param context    current Context
      * @param permission String permission to ask
      * @return boolean true/false
      */
     public boolean isPermissionGranted(Context context, String permission) {
-        boolean granted = (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+        boolean granted = ((Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED));
         return granted;
     }
 
     /**
-     * @param context current Context
+     * @param context     current Context
      * @param permissions String[] permission to ask
      * @return boolean true/false
      */
@@ -156,7 +155,7 @@ public class ActivityManagePermission extends AppCompatActivity {
     }
 
     /**
-     * @param permission String permission ask
+     * @param permission       String permission ask
      * @param permissionResult callback PermissionResult
      */
     public void askCompactPermission(String permission, PermissionResult permissionResult) {
@@ -165,8 +164,9 @@ public class ActivityManagePermission extends AppCompatActivity {
         internalRequestPermission(permissionsAsk);
 
     }
+
     /**
-     * @param permissions String[] permissions ask
+     * @param permissions      String[] permissions ask
      * @param permissionResult callback PermissionResult
      */
     public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {

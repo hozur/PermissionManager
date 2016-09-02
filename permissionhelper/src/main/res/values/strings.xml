@@ -23,5 +23,5 @@
   ~ SOFTWARE.
   -->
 <resources>
-    <string name="app_name">MarshmallowPermissionHelper</string>
+    <string name="app_name">PermissionHelper</string>
 </resources>

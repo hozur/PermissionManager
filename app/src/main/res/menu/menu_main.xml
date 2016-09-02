@@ -2,9 +2,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="permission.auron.com.samplemarshmallowpermissionhelper.MainActivity">
+
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/ask_single_activity"
+        android:orderInCategory="101"
+        android:title="@string/askSingleActivity"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ask_multi_activity"
+        android:orderInCategory="102"
+        android:title="@string/askMultiPermission"
+        app:showAsAction="never" />
+
+    <!--<item
+        android:id="@+id/ask_single_fragment"
+        android:orderInCategory="103"
+        android:title="@string/askSingleFragment"
+        app:showAsAction="never" />
+-->
+
+    <item
+        android:id="@+id/check_permission"
+        android:orderInCategory="104"
+        android:title="@string/checkPermission"
         app:showAsAction="never" />
 </menu>
