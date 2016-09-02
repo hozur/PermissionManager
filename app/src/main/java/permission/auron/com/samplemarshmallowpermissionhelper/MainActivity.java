@@ -55,7 +55,7 @@ public class MainActivity extends ActivityManagePermission {
                     }
 
                     @Override
-                    public void permissionForeverDienid() {
+                    public void permissionForeverDenied() {
 
                         openSettingsApp(MainActivity.this);
 
@@ -99,7 +99,7 @@ public class MainActivity extends ActivityManagePermission {
             }
 
             @Override
-            public void permissionForeverDienid() {
+            public void permissionForeverDenied() {
 
             }
         });
