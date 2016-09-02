@@ -1,4 +1,4 @@
-# MarshmallowPermissionManager
+# PermissionHelper
 
 [![Platform (Android)](https://img.shields.io/badge/platform-Android-blue.svg?style=flat-square)](http://www.android.com)
 [![ Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MarshmallowPermissionManager-green.svg?style=true)](https://android-arsenal.com/details/1/3234)
@@ -6,7 +6,7 @@
 [![Codewake](https://www.codewake.com/badges/ask_question_flat_square.svg)](https://www.codewake.com/p/marshmallowpermissionmanager)
 
 
-#### Helper to ask runtime permission on android marshmallow
+#### Helper to ask runtime permission on android marshmallow and nougat
 
 
 The library takes care themselves to check whether a permit has already been agreed by the user or not.
@@ -33,7 +33,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
- compile 'com.auron:permission-manage:1.1.4'
+ compile 'com.auron:permission-manage:1.1.5'
 }
 ```
 
