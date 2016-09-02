@@ -8,7 +8,7 @@
 
     <string name="attention">Attention</string>
     <string name="messageperm">Attention this action needs your permission to run you access the settings?</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="choose_permission">Choose permission to test</string>
     <string name="granted">Granted!</string>
