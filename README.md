@@ -4,6 +4,9 @@
 [![ Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MarshmallowPermissionManager-green.svg?style=true)](https://android-arsenal.com/details/1/3234)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/RurioLuca/MarshmallowPermissionManager/blob/master/License)
 [![Codewake](https://www.codewake.com/badges/ask_question_flat_square.svg)](https://www.codewake.com/p/marshmallowpermissionmanager)
+[ ![Download](https://api.bintray.com/packages/auron/maven/permission-manage/images/download.svg) ](https://bintray.com/auron/maven/permission-manage/_latestVersion) 
+[![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=9)
+ [![GitHub stars](https://img.shields.io/github/stars/RurioLuca/MarshmallowPermissionManager.svg)](https://github.com/RurioLuca/MarshmallowPermissionManager/stargazers)
 
 
 #### Helper to ask runtime permission on android marshmallow and nougat
@@ -16,7 +19,7 @@ if the user has given consent call the system dialog for the acceptance
 
 ### Requirements
 
-The library requires Android **API Level 7+**.
+The library requires Android **API Level 9+**.
 
 
 ### Import
