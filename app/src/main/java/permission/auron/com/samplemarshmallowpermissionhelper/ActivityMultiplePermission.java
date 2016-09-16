@@ -112,6 +112,9 @@ public class ActivityMultiplePermission extends ActivityManagePermission {
             case R.id.ask_multi_activity:
 
                 return true;
+            case R.id.ask_annotation :
+                startActivity(new Intent(ActivityMultiplePermission.this, ActivityAnnotation.class));
+                return true;
             case R.id.check_permission:
                 startActivity(new Intent(ActivityMultiplePermission.this, ActivityCheckPermission.class));
                 this.finish();

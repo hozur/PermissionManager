@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
 	<string name="define_marshmallowpermissionmanager"></string>
 	<string name="library_marshmallowpermissionmanager_author">Rurio Luca</string>
 	<string name="library_marshmallowpermissionmanager_authorWebsite">https://github.com/RurioLuca/MarshmallowPermissionManager</string>
@@ -12,4 +13,5 @@
 	<string name="library_marshmallowpermissionmanager_repositoryLink">https://github.com/RurioLuca/MarshmallowPermissionManager</string>
 	<string name="library_marshmallowpermissionmanager_classPath">permission.auron.com.marshmallowpermissionhelper</string>
 	<string name="library_marshmallowpermissionmanager_licenseId">mit</string>
+
 </resources>

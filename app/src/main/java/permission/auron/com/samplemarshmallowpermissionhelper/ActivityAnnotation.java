@@ -17,12 +17,16 @@ import android.widget.ImageView;
 import permission.auron.com.marshmallowpermissionhelper.ActivityManagePermission;
 import permission.auron.com.marshmallowpermissionhelper.PermissionResult;
 import permission.auron.com.marshmallowpermissionhelper.PermissionUtils;
+import permission.auron.com.marshmallowpermissionhelper.annotation.AskPermission;
 import permission.auron.com.samplemarshmallowpermissionhelper.checkPermission.ActivityCheckPermission;
 
-public class MainActivity extends ActivityManagePermission {
+/**
+ * Created by luca on 13/09/16.
+ */
+public class ActivityAnnotation extends ActivityManagePermission {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    public static String TAG = MainActivity.class.getSimpleName();
+    public static String TAG = ActivityMultiplePermission.class.getSimpleName();
     private ImageView imageView;
     private FloatingActionButton floatingActionButton;
 
@@ -36,7 +40,7 @@ public class MainActivity extends ActivityManagePermission {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.app_name);
-        getSupportActionBar().setSubtitle(R.string.askSingleActivity);
+        getSupportActionBar().setSubtitle(R.string.askMultiPermission);
         floatingActionButton = ((FloatingActionButton) findViewById(R.id.fab));
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -44,36 +48,14 @@ public class MainActivity extends ActivityManagePermission {
             public void onClick(View view) {
 
 
-                //single permission
-                askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
-                        dispatchTakePictureIntent();
-
-                    }
-
-                    @Override
-                    public void permissionDenied() {
-                        //permission denied
-                        //replace with your action
-                    }
-
-                    @Override
-                    public void permissionForeverDenied() {
-                        //permission denied
-                        //replace with your action
-                        showDialog();
-
-                    }
-                });
+                sampleAskMultiplePermission();
             }
         });
 
 
     }
 
+    @AskPermission(permission = PermissionUtils.Manifest_CAMERA)
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null)
@@ -90,6 +72,32 @@ public class MainActivity extends ActivityManagePermission {
         }
     }
 
+    private void sampleAskMultiplePermission() {
+        String permissionAsk[] = {PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE};
+
+        askCompactPermissions(permissionAsk, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+                dispatchTakePictureIntent();
+            }
+
+            @Override
+            public void permissionDenied() {
+                //permission denied
+                //replace with your action
+            }
+
+            @Override
+            public void permissionForeverDenied() {
+
+                showDialog();
+
+            }
+        });
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,16 +111,17 @@ public class MainActivity extends ActivityManagePermission {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.ask_single_activity:
+                this.finish();
                 return true;
+
             case R.id.ask_multi_activity:
-                startActivity(new Intent(MainActivity.this, ActivityMultiplePermission.class));
-                return true;
-            case R.id.ask_annotation :
-                startActivity(new Intent(MainActivity.this, ActivityAnnotation.class));
+
                 return true;
             case R.id.check_permission:
-                startActivity(new Intent(MainActivity.this, ActivityCheckPermission.class));
+                startActivity(new Intent(ActivityAnnotation.this, ActivityCheckPermission.class));
+                this.finish();
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -120,17 +129,20 @@ public class MainActivity extends ActivityManagePermission {
 
 
     private void showDialog() {
+
         AlertDialog.Builder builder =
-                new AlertDialog.Builder(MainActivity.this, R.style.AppCompatAlertDialogStyle);
+                new AlertDialog.Builder(ActivityAnnotation.this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle(R.string.attention);
         builder.setMessage(R.string.messageperm);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                openSettingsApp(MainActivity.this);
+                openSettingsApp(ActivityAnnotation.this);
             }
         });
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
+
+
 }
